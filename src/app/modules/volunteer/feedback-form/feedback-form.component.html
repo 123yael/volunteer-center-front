@@ -1,0 +1,28 @@
+<form class="d-flex h-100 flex-column align-items-center text-center" [formGroup]="feedbackForm" (submit)="createFeedback()">
+
+    <div class="col-lg-4 col-12 px-4 pb-4">
+
+        <div class="d-flex justify-content-center flex-column align-items-center">
+            <div class="logo mb-3 mt-5 d-flex justify-content-center align-items-center">
+                <img class="logoImg rounded-circle " src="../../../assets/logo.png">
+            </div>
+        </div>
+
+        <p class="h2 col-12 my-3 font-weight-bold"><strong>שלום {{fullName}}</strong></p>
+
+        <p class="h3">נשמח לדעת על מידת חווית ההתנדבות שלך:</p>
+
+        <ngb-rating class="mt-4" [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
+
+        <mat-form-field appearance="outline" class="col-md-12 col-12 mt-4">
+            <mat-label>הערות</mat-label>
+            <textarea matInput formControlName="noteControl"></textarea>
+            <mat-error *ngIf="feedbackForm.get('noteControl')?.hasError('required')">
+                הערה <strong>חובה</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <div><button mat-raised-button class="mybutton col-12 mt-2">שלח משוב</button></div>
+
+    </div>
+</form>

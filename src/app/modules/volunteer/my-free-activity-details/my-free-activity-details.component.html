@@ -1,0 +1,64 @@
+<form class="d-flex h-100 flex-column align-items-center text-center">
+
+    <div class="col-lg-4 col-12 px-4 pb-4">
+
+        <div class="row">
+
+            <div class="d-flex justify-content-center flex-column align-items-center">
+                <div class="logo mb-3 mt-5 d-flex justify-content-center align-items-center">
+                    <img class="logoImg rounded-circle " src="../../../assets/logo.png">
+                </div>
+            </div>
+
+            <p class="h2 col-12 my-3">פרטי ההתנדבויות שלי:</p>
+
+            <div class="h6">
+                <div class="alert alert-info" role="alert">
+                    שים לב! ברשימה זו מופיעים רק התנדבויות שאושרו לך,
+                    במידה ויש התנדבות שלא אושרה היא לא תופיע ברשימה זו.
+                </div>
+            </div>
+
+            <div>
+                <div *ngIf="dataSource.length > 0 && !spinnerService.isVisible()" class="w-100 h6">
+                    <div class="row border text-light py-1 myTitel">
+                        <div class="myCol-8"></div>
+                        <div class="myCol-36">
+                            <strong>
+                                קטגוריה
+                            </strong>
+                        </div>
+                        <div class="myCol-36">
+                            <strong>
+                                עמותה
+                            </strong>
+                        </div>
+                        <div class="myCol-20">
+                            <strong>
+                                סטטוס
+                            </strong>
+                        </div>
+                    </div>
+                    <div *ngFor="let row of dataSource" class="row border">
+                        <button class="myBtn p-0 m-0 myCol-8 py-3" type="button" (click)="onOpenDetails(row)">
+                            <mat-icon class="icon" fontIcon="more_vert"></mat-icon>
+                        </button>
+                        <div class="myCol-36 py-3">
+                            {{ row.category.category_name }}
+                        </div>
+                        <div class="myCol-36 py-3">
+                            {{ row.manager.association.name }}
+                        </div>
+                        <div class="myCol-20 py-3" *ngIf="row.status == 'TAKEN'">
+                            <mat-icon class="icon" fontIcon="timer"></mat-icon>
+                        </div>
+                        <div class="myCol-20 py-3" *ngIf="row.status == 'DONE'">
+                            <mat-icon class="icon" fontIcon="done_outline"></mat-icon>
+                        </div>
+                    </div>
+                </div>
+                <a mat-raised-button class="mybutton col-12 mt-2 w-100" routerLink="/">חזרה לתפריט הראשי</a>
+            </div>
+        </div>
+    </div>
+</form>

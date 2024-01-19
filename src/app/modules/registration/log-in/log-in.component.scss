@@ -1,0 +1,15 @@
+@import '../../../app.component.scss';
+
+.myinput {
+    height: 70px;
+}
+
+
+.myinput, .mybutton {
+    width: 300px;
+}
+
+.buttonAction {
+    background-color: rgba($color: $site-color, $alpha: 0.8) !important;
+}
+

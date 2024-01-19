@@ -1,0 +1,22 @@
+
+$site-color: #FFC000;
+
+.mybg {
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.mybutton {
+    background-color: rgba($color: $site-color, $alpha: 1.0) !important
+}
+
+.myTitleModel {
+    background-color: rgba($color: $site-color, $alpha: 0.8);
+}
+
+.mybuttonoutline {
+    background-color: rgba($color: #fff, $alpha: 1.0);
+    color: rgba($color: $site-color, $alpha: 1.0); 
+    border: 1px solid rgba($color: $site-color, $alpha: 1.0);
+}

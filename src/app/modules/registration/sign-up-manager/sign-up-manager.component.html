@@ -1,0 +1,94 @@
+<form class="d-flex h-100 flex-column align-items-center text-center" [formGroup]="signUpForm" (submit)="signUp()">
+
+    <div class="col-lg-6 col-12 px-4 pb-4">
+
+        <div class="row">
+            <div class="d-flex justify-content-center flex-column align-items-center">
+                <div class="logo mb-3 mt-5 d-flex justify-content-center align-items-center">
+                    <img class="logoImg rounded-circle " src="../../../assets/logo.png">
+                </div>
+            </div>
+
+            <p class="h2 col-12 mb-3">הרשמת אחראי התנדבויות בעמותה</p>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>שם מלא</mat-label>
+                <input matInput type="text" formControlName="nameControl">
+                <mat-error *ngIf="signUpForm.get('nameControl')?.hasError('required')">
+                    שם מלא <strong>חובה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>מספר טלפון</mat-label>
+                <input matInput type="tel" formControlName="phoneControl">
+                <mat-error *ngIf="signUpForm.get('phoneControl')?.hasError('required')">
+                    טלפון <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.get('phoneControl')?.hasError('pattern')">
+                    טלפון <strong>לא תקין</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>דוא"ל</mat-label>
+                <input matInput type="email" formControlName="emailControl">
+                <mat-error *ngIf="signUpForm.get('emailControl')?.hasError('required')">
+                    דוא"ל <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.get('emailControl')?.hasError('email')">
+                    כתובת דוא"ל <strong>לא תקינה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>צור סיסמה שלך</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordControl">
+                <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('required')">
+                    סיסמה <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('minlength')">
+                    סיסמה חיבת להכיל <strong>8 תוים ומעלה</strong>
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" type="button" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>בחר עמותה</mat-label>
+                <mat-select formControlName="associationControl">
+                    <mat-option [value]="association.id" *ngFor="let association of associations">{{ association.name
+                        }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="signUpForm.get('associationControl')?.hasError('required')">
+                    שדה <strong>חובה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>הזן את סיסמת העמותה</mat-label>
+                <input matInput type="password" formControlName="passwordAssociationControl">
+                <mat-error *ngIf="signUpForm.get('passwordAssociationControl')?.hasError('required')">
+                    שדה <strong>חובה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div>
+                <button mat-raised-button class="mybutton col-12 mt-2">אישור</button>
+            </div>
+
+            <div>
+                <hr class="mybutton col-12 mt-4" />
+            </div>
+
+            <div class="col-md-12 col-12 h5">
+                <p>העמותה שלך לא קיימת?</p>
+                <button mat-raised-button type="button" class="mybutton col-12 mt-2 col-md-6" (click)="openDialog()">הוספת עמותה
+                    חדשה</button>
+            </div>
+
+        </div>
+    </div>
+</form>

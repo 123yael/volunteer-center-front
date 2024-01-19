@@ -1,0 +1,8 @@
+<div class="alert p-0 m-0" [ngClass]="data.class" role="alert">
+    <div mat-dialog-content>
+        <div [innerHTML]="data.content"></div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close [routerLink]="data.link">Close</button>
+    </div>
+</div>

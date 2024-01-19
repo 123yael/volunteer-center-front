@@ -1,0 +1,16 @@
+@import '../../../app.component.scss';
+
+.buttonDistrict {
+    background-color: white !important;
+    border: 1px solid $site-color;
+}
+
+.choos {
+    background-color: $site-color !important;
+    color: white !important;
+}
+
+.nchoos {
+    background-color: white;
+    color: black;
+}
